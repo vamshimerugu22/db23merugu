@@ -1,5 +1,6 @@
 # fwb23merugu
 Welcome to Fwb23merugu server
+Heroku link: https://db23merugu.herokuapp.com/
 
 Hello, Working on pug templates to dynamically generate webpages
 
