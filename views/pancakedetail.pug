@@ -5,8 +5,8 @@ block content
  
   - let pancakeid = toShow._id 
   - let pancake_type = toShow.pancake_type 
-  - let pancakecost = toShow.cost 
-  - let pancakesize = toShow.size 
+  - let pancakeprice = toShow.price
+  - let pancaketoppings = toShow.toppings 
   div 
     div.row 
       div(class='pancakeAttr mr-3') pancake ID is: 
@@ -15,8 +15,8 @@ block content
       div(class='pancakeAttr mr-3') pancake Type is: 
       div #{pancake_type} 
     div.row 
-      div(class='pancakeAttr mr-3') pancake Size is: 
-      div #{pancakesize} 
+      div(class='pancakeAttr mr-3') pancake price is: 
+      div #{pancakeprice} 
     div.row 
-      div(class='pancakeAttr mr-3') pancake Cost is: 
-      div #{pancakecost} 
+      div(class='pancakeAttr mr-3') pancake toppings is: 
+      div #{pancaketoppings} 
