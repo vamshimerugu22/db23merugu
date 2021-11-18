@@ -2,10 +2,10 @@ extends layout
 
 block content
   h1= title
-  - var results = [{pancake_type: "Scotch Pancakes",price: 21,toppings:"maple syrup"},{pancake_type: "Russian Blinis",price: 27,toppings:" fresh fruit"},{pancake_type: "Irish Boxty",price: 30,toppings:"whipped cream"}];
+  - let items = results
    div(class = "container-fluid")
     div(class = "row")
-     each form,index in results
+     each form,index in items
         div(class="col-sm-4" onclick=`buy(${index})`) pancake-type: #{form.pancake_type} 
         br
         br 
