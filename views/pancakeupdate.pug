@@ -1,0 +1,45 @@
+extends layout 
+ 
+block content 
+  h1(class="text-center")= title 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let pancakeid = toShow._id 
+    - let pancake_type = toShow.type 
+    - let pancakeprice  = toShow.pricepancakeprice  
+    - let pancaketoppings = toShow.toppings
+    
+    div.row(class='text-center mb-2') 
+        div.mr-1 ID is 
+        div #{pancakeid} 
+    - let actionid = "/resource/pancakes/" + pancakeid 
+    form(id='pancakeForm',class="text-center",  action= actionid, method="PUT") 
+        div.form-group 
+            label.pancakeAttr(for='type') pancake type 
+            input#type(type='text', name='type', value= pancake_type ) 
+        div.form-group 
+            label.pancakeAttr(for='price ') pancake price
+            input#pricepancakeprice (type='number', name='price ', value=pancakeprice  ) 
+        div.form-group 
+            label.pancakeAttr(for='toppings') pancake price 
+            input#price(type='text', name='toppings', value= pancaketoppings ) 
+        input(type="submit" class="btn btn-warning m-2") 
+    
+    script. 
+        document.forms['pancakeForm'].addEventListener('submit', (event) => { 
+        event.preventDefault(); 
+        // TODO do something here to show user that form is being submitted 
+        fetch(event.target.action, { 
+            method: 'PUT', 
+            body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+        }).then((resp) => { 
+            return resp.text(); // or resp.text() or whatever the server sends 
+        }).then((body) => { 
+            alert("Update succeded") 
+            // TODO handle body 
+        }).catch((error) => { 
+            // TODO handle error 
+            alert("Update failed " + error ) 
+        }); 
+        });

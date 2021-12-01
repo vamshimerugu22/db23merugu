@@ -4,8 +4,9 @@ block content
   h1= title
   - let items = results
    div(class = "container-fluid")
-    div(class = "row")
-     each form,index in items
+    div(class = "row m-1")
+     each form,index in items  
+      - let destination = `dispatch(\"/pancake/update?id=${form._id}\")` 
         div(class="col-sm-4" onclick=`buy(${index})`) pancake-type: #{form.pancake_type} 
         br
         br 
@@ -13,7 +14,12 @@ block content
         br
         br  
         div(class="col-sm-4" onclick=`buy(${index})`) toppings: #{form.toppings}
+        button.btn( class="btn-primary" class="btn-toolbar", onclick= destination) Update
         script.
                 function buy(itemNo){
                     alert(`You purchased item ${itemNo+1}`)
                 }
+        script. 
+                function dispatch(path){ 
+                   window.location.href=path 
+                } 

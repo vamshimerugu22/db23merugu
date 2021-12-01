@@ -1,22 +1,27 @@
-extends layout 
- 
-block content 
-  h1= title 
- 
-  - let pancakeid = toShow._id 
-  - let pancake_type = toShow.pancake_type 
-  - let pancakeprice = toShow.price
-  - let pancaketoppings = toShow.toppings 
-  div 
-    div.row 
-      div(class='pancakeAttr mr-3') pancake ID is: 
-      div #{pancakeid} 
-    div.row 
-      div(class='pancakeAttr mr-3') pancake Type is: 
-      div #{pancake_type} 
-    div.row 
-      div(class='pancakeAttr mr-3') pancake price is: 
-      div #{pancakeprice} 
-    div.row 
-      div(class='pancakeAttr mr-3') pancake toppings is: 
-      div #{pancaketoppings} 
+extends layout
+
+block content
+  h1= title
+
+  
+    - let pancakeid = toShow._id
+    - let pancaketype= toShow.type
+    - let pancakeprice = toShow.price
+    - let pancaketoppings = toShow.toppings
+    
+
+  
+    div
+      div.row
+        div(class='pancakeAttr mr-3') pancake ID is:
+        div(class='newAttr') #{pancakeid}
+      div.row
+        div(class='pancakeAttr mr-3') pancake type is:
+        div(class='newAttr') #{pancakeBrand}
+      div.row
+        div(class='pancakeAttr mr-3') pancake price is:
+        div(class='newAttr') #{pancakeprice}
+      div.row
+        div(class='pancakeAttr mr-3') pancake toppings is:
+        div(class='newAttr') #{pancaketoppings}
+      

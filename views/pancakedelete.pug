@@ -1,0 +1,51 @@
+extends layout
+block content
+ h1= title
+ if (toShow == null)
+  h2 No instance to Delete
+ else
+  - let pancakeid = toShow._id
+  - let pancake_type = toShow.pancake_type
+  - let pancakeprice = toShow.price
+  - let pancaketoppings = toShow.toppings
+  - let actionid = "/resource/pancakes/" + pancakeid
+  script let actionid = "#{actionid}"
+  div
+   div.row
+    div(class='pancakeAttr mr-3') pancake ID is:
+    div #{pancakeid}
+   div.row
+    div(class='pancakeAttr mr-3') pancake Type is:
+    div #{pancake_type}
+   div.row
+    div(class='pancakeAttr mr-3') pancake price is:
+    div #{pancakeprice}
+   div.row
+    div(class='pancakeAttr mr-3') pancake toppings is:
+    div #{pancaketoppings}
+
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+
+  script.
+    function cancel() {
+      // Go back to the home page for the pancake collection
+      window.location.href='/pancakes'
+    }
+  script.
+    function deleteOnid() {
+      console.log("starting delete")
+      // delete first
+      fetch(actionid, {
+        method: 'DELETE'      // Don't need a body for the delete
+      }).then((resp) => {
+        return resp.text(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Delete succeded")
+        window.location.href='/pancakes'
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Delete failed " + error )
+      });
+    }
